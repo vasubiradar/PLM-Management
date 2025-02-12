@@ -1,0 +1,157 @@
+/* General Styles */
+.homepage-container {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100%;
+    background: linear-gradient(to right, #c5e7f5, #e6e6e6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* Left Side - Text */
+.hero-text {
+    flex: 1;
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    color: #00274d;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Right Side - Image */
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image {
+    width: 450px; /* Adjust width */
+    height: 320px; /* Adjust height */
+    border-radius: 50% / 60%; /* Creates horizontal oval */
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Info Cards */
+.info-section {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background: #00274d;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.info-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Adds depth */
+    background: #0f376c; /* Slightly lighter blue on hover */
+}
+
+.info-card h3 {
+    margin-bottom: 10px;
+}
+
+/* Steps Section */
+.steps-section {
+    text-align: center;
+    padding: 50px 20px;
+    background: #e9ecef;
+}
+
+.steps-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.step-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.step-text {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-bottom: 20px;
+    }
+
+    .hero-image {
+        width: 250px;
+        height: 250px;
+    }
+
+    .info-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-card {
+        width: 80%;
+    }
+
+    .step-card {
+        width: 90%;
+        font-size: 1rem;
+    }
+}

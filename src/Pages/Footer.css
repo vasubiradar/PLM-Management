@@ -1,0 +1,100 @@
+/* Ensure full height layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main wrapper to ensure content pushes the footer down */
+#root, .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Ensures content takes up available space and pushes footer to the bottom */
+.main-content {
+    flex: 1;
+}
+
+/* Footer Styles */
+.footer {
+    background: #001427;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+/* Left Side - College Info */
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* Center - Links */
+.footer-links {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-item {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-item:hover {
+    color: #ffdd57;
+}
+
+/* Right Side - Social Media */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+}
+
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.footer-right a:hover {
+    color: #ffdd57;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-right {
+        align-items: center;
+    }
+    .app-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+}

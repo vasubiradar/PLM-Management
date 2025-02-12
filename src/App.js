@@ -1,23 +1,54 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Signin from "./Pages/Signin.js";
+import Signup from "./Pages/Signup.js";
+import AdminPage from "./Pages/AdminPage.js";
+import HomePage from "./Pages/HomePage.js";
+import Navbar from "./Pages/Navbar";
+import Footer from "./Pages/Footer";
+import GenerateIDCard from "./Pages/GenerateIdCard.js";
 import './App.css';
-import Nav from './HomePage/Nav';
+
+import { getFromLocalStorage, setToLocalStorage } from "./Services/LocalStorageUtil.js";
 
 function App() {
+  const initialAuthStatus = getFromLocalStorage("isAuthenticated") || false;
+  const initialIsUser = getFromLocalStorage("isUser") || false;
+  const initialIsAdmin = getFromLocalStorage("isAdmin") || false;
+
+  const [isAuthenticated, setIsAuthenticated] = useState(initialAuthStatus);
+  const [isUser, setIsUser] = useState(initialIsUser);
+  const [isAdmin, setIsAdmin] = useState(initialIsAdmin);
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setIsUser(false);
+    setIsAdmin(false);
+    setToLocalStorage("isAuthenticated", false);
+    setToLocalStorage("isUser", false);
+    setToLocalStorage("isAdmin", false);
+    window.location.reload();
+  };
+
   return (
-    <div className="App">
-      {/* <h1>Hello</h1>
-      <h1>this is me ;</h1>
-      <h2>e-commerce</h2>
-      <h1>hi</h1>
-      <h1>vaishu</h1>
-      <h1>prithvi</h1> */}
-      <Nav></Nav>
-      <h1>prithvi</h1>
-      <h1>Gargiiiii Hereeeee</h1>
-      <h1> check check check hellooooo</h1>
-      <h1> ved shlok </h1>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
       
-    </div>
+      <Route path="/" element={<HomePage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/login"
+          element={<Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}
+        />
+        <Route
+            path="/admin"
+            element={isAuthenticated && isAdmin ? <AdminPage /> : <Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}
+          />
+          <Route path="/generate-id-card" element={<GenerateIDCard />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
