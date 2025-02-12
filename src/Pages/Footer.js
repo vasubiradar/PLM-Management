@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import logo from "./logo.jpg"; // Add your college logo in assets folder
+// import logo from "./logo.jpg"; // Add your college logo in assets folder
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-left">
-        <img src={logo} alt="College Logo" className="footer-logo" />
+        {/* <img src={logo} alt="College Logo" className="footer-logo" /> */}
         <div>
           <h3>College of computer science and information technology</h3>
           <p>NAAC Reaccredited Grade</p>

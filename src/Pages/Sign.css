@@ -1,0 +1,73 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+  }
+  
+  .signin-form-container, .signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('https://wallpapers.com/images/hd/professional-background-2b3p57557lfg0y5g.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    
+  }
+  
+  .signin-form, .signup-form {
+    background-color: rgba(209, 217, 228, 0.635);
+    padding: 40px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signin-form-title, .signup-form-title {
+    color: #003366;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .signin-input-field, .signup-input-field {
+    margin-bottom: 20px;
+  }
+  
+  .signin-input-label, .signup-input-label {
+    font-weight: bold;
+    color: #003366;
+  }
+  
+  .signin-input, .signup-input, .signup-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .signin-input:focus, .signup-input:focus, .signup-select:focus {
+    border-color: #003366;
+  }
+  
+  .signin-submit-btn, .signup-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .signin-submit-btn:hover, .signup-submit-btn:hover {
+    background-color: #005bb5;
+  }
+  

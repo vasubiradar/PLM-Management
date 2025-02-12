@@ -56,7 +56,7 @@ const HomePage = () => {
         <div className="steps-container">
           {steps.map((step, index) => (
             <div className="step-card" key={index}>
-              <img src={stepIcons[index]} alt={Step `${index + 1}`} className="step-icon" />
+              <img src={stepIcons[index]} alt={`Step ${index + 1}`} className="step-icon" />
               <p className="step-text">{step}</p>
             </div>
           ))}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import logo from "./logo.jpg"; // Ensure the logo is correctly placed in assets folder
+// import logo from "./logo.jpg"; // Ensure the logo is correctly placed in assets folder
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Navbar = () => {
     <nav className="navbar">
       {/* Left Side - Logo & College Name */}
       <div className="nav-logo">
-        <img src={logo} alt="College Logo" className="college-logo" />
+        {/* <img src={logo} alt="College Logo" className="college-logo" /> */}
         <span className="college-name">COCSIT</span>
       </div>
 

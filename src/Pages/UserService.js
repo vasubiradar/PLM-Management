@@ -12,7 +12,8 @@ class UserService {
   }
 
   findUserByEmail(email) {
-    return axios.get(${USER_REST_API_URL}/email/${email});
+    return axios.get(`${USER_REST_API_URL}/email/${email}`);
+
   }
 }
 
