@@ -5,6 +5,7 @@ import Signup from "./Pages/Signup.js";
 import HomePage from "./Pages/HomePage.js";
 import Navbar from "./Pages/Navbar";
 import Footer from "./Pages/Footer";
+import AdminPage from "./Pages/AdminPage.js";
 import './App.css';
 
 import { getFromLocalStorage, setToLocalStorage } from "./Services/LocalStorageUtil.js";
@@ -39,10 +40,10 @@ function App() {
           path="/login"
           element={<Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}
         />
-        {/* <Route
+        <Route
             path="/admin"
             element={isAuthenticated && isAdmin ? <AdminPage /> : <Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}
-          /> */}
+          />
           
       </Routes>
       <Footer />
