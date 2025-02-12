@@ -5,6 +5,8 @@ import Signup from "./Pages/Signup.js";
 import HomePage from "./Pages/HomePage.js";
 import Navbar from "./Pages/Navbar";
 import Footer from "./Pages/Footer";
+import Contact from "./Pages/contact.js";
+import About from "./Pages/about.js";
 import './App.css';
 
 import { getFromLocalStorage, setToLocalStorage } from "./Services/LocalStorageUtil.js";
@@ -35,6 +37,8 @@ function App() {
       
       <Route path="/" element={<HomePage />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/login"
           element={<Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}

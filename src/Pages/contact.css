@@ -1,0 +1,71 @@
+/* Page Layout */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://st.depositphotos.com/1327054/2804/i/450/depositphotos_28042367-stock-photo-chemistry-with-reaction-formula-in.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  
+  /* Contact Box Styling */
+  .contact-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .contact-box h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Form Styling */
+  .contact-box form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-box label {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #666;
+    text-align: left;
+  }
+  
+  .contact-box input,
+  .contact-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .contact-box textarea {
+    resize: none;
+  }
+  
+  .contact-box button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-box button:hover {
+    background-color: #0056b3;
+  }
+  

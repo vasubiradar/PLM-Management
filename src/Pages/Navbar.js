@@ -34,15 +34,15 @@ const Navbar = () => {
       {/* Left Side - Logo & College Name */}
       <div className="nav-logo">
         {/* <img src={logo} alt="College Logo" className="college-logo" /> */}
-        <span className="college-name">COCSIT</span>
+        <span className="college-name">TestingShashtra</span>
       </div>
 
       {/* Right Side - Navigation Links */}
       <div className="nav-links">
         <Link to="/" className="nav-item">Home</Link>
-        <Link to="/generate-id-card" className="nav-item">Generate ID Card</Link>
-        <Link to="/" className="nav-item">About Us</Link>
-        <Link to="/" className="nav-item">Contact Us</Link>
+        <Link to="/generate-id-card" className="nav-item">All Tests</Link>
+        <Link to="/about" className="nav-item">About Us</Link>
+        <Link to="/contact" className="nav-item">Contact Us</Link>
 
         {isAuthenticated ? (
           <button onClick={handleLogout} className="nav-item login-btn">

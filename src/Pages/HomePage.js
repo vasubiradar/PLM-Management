@@ -2,7 +2,7 @@ import React from "react";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const heroImage = "https://t3.ftcdn.net/jpg/02/84/36/48/360_F_284364895_3uU4w7qfgaBtBD0ugtA1SVgXHQJ5kL8d.jpg";
+  const heroImage = "https://thumbs.dreamstime.com/b/chemistry-laboratory-woman-pipettes-test-tubes-chemistry-laboratory-woman-pipettes-114782620.jpg";
 
   const stepIcons = [
     "https://cdn-icons-png.flaticon.com/512/747/747376.png", // Signup Icon
