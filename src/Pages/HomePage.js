@@ -2,20 +2,20 @@ import React from "react";
 import "./HomePage.css";
 
 const HomePage = () => {
-  const heroImage = "https://thumbs.dreamstime.com/b/chemistry-laboratory-woman-pipettes-test-tubes-chemistry-laboratory-woman-pipettes-114782620.jpg";
+  const heroImage = "https://islamabadspecialistsclinic.com/wp-content/uploads/2024/04/lab-image.webp";
 
   const stepIcons = [
-    "https://cdn-icons-png.flaticon.com/512/747/747376.png", // Signup Icon
-    "https://cdn-icons-png.flaticon.com/512/2921/2921222.png", // Form Icon
-    "https://cdn-icons-png.flaticon.com/512/190/190411.png", // Approval Icon
-    "https://cdn-icons-png.flaticon.com/512/724/724933.png", // Download Icon
+    "https://cdn-icons-png.flaticon.com/512/747/747376.png",
+    "https://cdn-icons-png.flaticon.com/512/2921/2921222.png",
+    "https://cdn-icons-png.flaticon.com/512/190/190411.png",
+    "https://cdn-icons-png.flaticon.com/512/724/724933.png",
   ];
 
   const steps = [
-    "Sign up with your details",
-    "Fill the ID Card Application Form",
-    "Wait for Admin Approval",
-    "Download Your ID Card",
+    "Register with your details",
+    "Book your test online",
+    "Visit or schedule home collection",
+    "Download your test reports",
   ];
 
   return (
@@ -24,9 +24,11 @@ const HomePage = () => {
       <section className="hero-section">
         <div className="hero-content">
           <div className="hero-text">
-            <h1>Welcome to Our ID Card Generator</h1>
-            <p>Easily generate your student ID card in just a few steps!</p>
-            <a href="/generate-id-card"><button className="nav-item login-btn">Click Here to Apply for an ID Card</button></a>
+            <h1>Welcome to Our Pathology Lab</h1>
+            <p>Accurate diagnostics, trusted results, and timely reports at your convenience.</p>
+            <a href="/book-test">
+              <button className="nav-item login-btn">Book Your Test Now</button>
+            </a>
           </div>
           <div className="hero-image-container">
             <img src={heroImage} alt="Hero" className="hero-image" />
@@ -34,25 +36,9 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Information Cards */}
-      <section className="info-section">
-        <div className="info-card">
-          <h3>📄 Apply for an ID</h3>
-          <p>Sign up and fill in the required details to request your student ID card.</p>
-        </div>
-        <div className="info-card">
-          <h3>✅ Admin Approval</h3>
-          <p>Once you submit the form, our admin team will review and approve your request.</p>
-        </div>
-        <div className="info-card">
-          <h3>📥 Download ID</h3>
-          <p>After approval, you can easily download your official student ID card.</p>
-        </div>
-      </section>
-
       {/* Steps Section */}
       <section className="steps-section">
-        <h2 className="steps-title">How to Generate Your ID Card?</h2>
+        <h2 className="steps-title">How to Get Your Test Reports?</h2>
         <div className="steps-container">
           {steps.map((step, index) => (
             <div className="step-card" key={index}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './about.css'; // Your updated CSS file
+import './about.css';
 
 const About = () => {
   return (
@@ -19,7 +19,7 @@ const About = () => {
           {/* Blood Test */}
           <div className="service-card">
             <img 
-              src="https://media.istockphoto.com/id/177440807/photo/doctor-with-test-tube.jpg?s=612x612&w=0&k=20&c=B0ALtqCg0G_4E7D8Flvlo8pazkZuz087kCfl5l_mE7c=" 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGyVu5o4TTotrr-_GwbuemsEI3LhRlOeRqNg&s" 
               alt="Blood Test" 
               className="service-image" 
             />
@@ -32,7 +32,7 @@ const About = () => {
           {/* X-Ray */}
           <div className="service-card">
             <img 
-              src="https://images.pexels.com/photos/7088474/pexels-photo-7088474.jpeg" 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgvEe9iCpo-7cS-aqwrEYsbuOXPTUMfCMvfw&s" 
               alt="X-Ray" 
               className="service-image" 
             />
@@ -45,7 +45,7 @@ const About = () => {
           {/* Urine Test */}
           <div className="service-card">
             <img 
-              src="https://images.pexels.com/photos/7089017/pexels-photo-7089017.jpeg" 
+              src="https://www.metropolisindia.com/upgrade/blog/upload/2022/12/The-Urine-Routine-Test-How-It-Works-Preparation-Tips-_-Results.jpg" 
               alt="Urine Test" 
               className="service-image" 
             />
@@ -58,7 +58,7 @@ const About = () => {
           {/* ECG */}
           <div className="service-card">
             <img 
-              src="https://images.pexels.com/photos/7088471/pexels-photo-7088471.jpeg" 
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-ERApGp6pYHyWfFDDo3EJZRoH17VJv5qcHw&s" 
               alt="ECG" 
               className="service-image" 
             />
@@ -71,7 +71,7 @@ const About = () => {
           {/* MRI Scan */}
           <div className="service-card">
             <img 
-              src="https://images.pexels.com/photos/7089045/pexels-photo-7089045.jpeg" 
+              src="https://cdn-prod.medicalnewstoday.com/content/images/articles/146/146309/mri-scan.jpg" 
               alt="MRI Scan" 
               className="service-image" 
             />
@@ -84,7 +84,7 @@ const About = () => {
           {/* COVID-19 Test */}
           <div className="service-card">
             <img 
-              src="https://images.pexels.com/photos/7088480/pexels-photo-7088480.jpeg" 
+              src="https://sunrisediagnosis.com/wp-content/uploads/2021/02/covid-test.jpg" 
               alt="COVID-19 Test" 
               className="service-image" 
             />
