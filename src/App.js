@@ -8,6 +8,9 @@ import Footer from "./Pages/Footer";
 import Contact from "./Pages/contact.js";
 import About from "./Pages/about.js";
 import AdminPage from "./Pages/AdminPage.js";
+import UserTestPage from "./Pages/UserTestPage.js";
+import BookingForm from "./Pages/BookingForm.js";
+import MyBookings from "./Pages/MyBookings.js";
 import './App.css';
 
 import { getFromLocalStorage, setToLocalStorage } from "./Services/LocalStorageUtil.js";
@@ -40,6 +43,10 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
+        <Route path="/tests" element={<UserTestPage />} />
+        <Route path="/book/:testId" element={<BookingForm />} />
+        <Route path="/MyBookings" element={<MyBookings/>} />
+
         <Route
           path="/login"
           element={<Signin setIsAuthenticated={setIsAuthenticated} setIsUser={setIsUser} setIsAdmin={setIsAdmin} />}

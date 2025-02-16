@@ -40,9 +40,10 @@ const Navbar = () => {
       {/* Right Side - Navigation Links */}
       <div className="nav-links">
         <Link to="/" className="nav-item">Home</Link>
-        <Link to="/generate-id-card" className="nav-item">All Tests</Link>
+        <Link to="/tests" className="nav-item">All Tests</Link>
         <Link to="/about" className="nav-item">About Us</Link>
         <Link to="/contact" className="nav-item">Contact Us</Link>
+        <Link to="/MyBookings" className="nav-item">My Bookings</Link>
 
         {isAuthenticated ? (
           <button onClick={handleLogout} className="nav-item login-btn">
