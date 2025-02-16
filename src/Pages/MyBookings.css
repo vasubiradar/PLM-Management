@@ -1,0 +1,79 @@
+.my-bookings-container {
+    padding: 20px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.my-bookings-header {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.no-bookings {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}
+
+.bookings-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.booking-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.booking-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.booking-card h3 {
+    margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #1a237e;
+}
+
+.booking-card p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.status-pending {
+    color: #ffa000;
+    font-weight: bold;
+}
+
+.status-confirmed {
+    color: #43a047;
+    font-weight: bold;
+}
+
+.status-cancelled {
+    color: #e53935;
+    font-weight: bold;
+}
+
+.technician-details {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-left: 5px solid #1a237e;
+    border-radius: 8px;
+}
+
+.technician-details p {
+    margin: 5px 0;
+    color: #333;
+}

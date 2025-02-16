@@ -20,6 +20,11 @@ const UserTestPage = () => {
         }
     };
 
+    const handleBookNow = (test) => {
+        localStorage.setItem("selectedTestName", test.testName);  // Store selected test name
+        navigate(`/book/${test.id}`);
+    };
+
     return (
         <div className="user-test-container">
             <h2 className="test-header">Available Tests</h2>
@@ -32,7 +37,7 @@ const UserTestPage = () => {
                             <p className="test-description">{test.description}</p>
                             <p className="test-price"><strong>Price:</strong> ${test.price}</p>
                             <p className="test-duration"><strong>Duration:</strong> {test.duration}</p>
-                            <button className="book-now-btn" onClick={() => navigate(`/book/${test.id}`)}>Book Now</button>
+                            <button className="book-now-btn" onClick={() => handleBookNow(test)}>Book Now</button>
                         </div>
                     </div>
                 ))}

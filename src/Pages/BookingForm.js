@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BookingService from "./BookingService";
+import "./BookingForm.css";
 
 const BookingForm = () => {
-    const { testId } = useParams(); // Extract test ID from URL
+    const { testId } = useParams();
     const navigate = useNavigate();
-    const patientId = localStorage.getItem("userId"); // Get patientId from local storage
+    const patientId = localStorage.getItem("userId");
+
+    const testName = localStorage.getItem("selectedTestName"); // Get test name stored during test selection
 
     const [formData, setFormData] = useState({
         name: "",
@@ -17,28 +20,21 @@ const BookingForm = () => {
         address: "",
     });
 
-    const [message, setMessage] = useState("");
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const bookingData = {
-            ...formData,
-            patientId: patientId,
-            testId: testId,
-            status: "Pending",
-        };
+        const bookingData = { ...formData, patientId, testId, testName, status: "Pending" };
 
         try {
             await BookingService.createBooking(bookingData);
-            setMessage("Your booking is successful! Your status is 'Pending'. You will soon receive confirmation with the technician details and visit time.");
+            alert("Your booking is successful! Status is 'Pending'. Confirmation soon.");
+            navigate("/my-bookings");  // Redirect to MyBookings page after submission
         } catch (error) {
             console.error("Error creating booking:", error);
-            setMessage("Failed to book the test. Please try again.");
+            alert("Failed to book the test. Please try again.");
         }
     };
 
@@ -60,7 +56,6 @@ const BookingForm = () => {
                 <textarea name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
                 <button type="submit">Submit</button>
             </form>
-            {message && <p className="success-message">{message}</p>}
         </div>
     );
 };

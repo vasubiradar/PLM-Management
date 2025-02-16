@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import BookingService from "./BookingService";
-// import "./MyBookings.css";
+import "./MyBookings.css";
 
 const MyBookings = () => {
     const [bookings, setBookings] = useState([]);
-    const patientId = localStorage.getItem("userId"); // Fetch patient ID
+    const patientId = localStorage.getItem("userId");
 
     useEffect(() => {
         fetchBookings();
@@ -30,15 +30,7 @@ const MyBookings = () => {
                         <div className="booking-card" key={booking.id}>
                             <h3>{booking.testName}</h3>
                             <p><strong>Date:</strong> {booking.testDate}</p>
-                            <p><strong>Address:</strong> {booking.address}</p>
                             <p><strong>Status:</strong> <span className={`status-${booking.status.toLowerCase()}`}>{booking.status}</span></p>
-                            {booking.status === "Confirmed" && booking.technician && (
-                                <div className="technician-details">
-                                    <p><strong>Technician Name:</strong> {booking.technician.name}</p>
-                                    <p><strong>Contact:</strong> {booking.technician.contact}</p>
-                                    <p><strong>Visit Time:</strong> {booking.technician.visitTime}</p>
-                                </div>
-                            )}
                         </div>
                     ))}
                 </div>
@@ -47,4 +39,4 @@ const MyBookings = () => {
     );
 };
 
-export default MyBookings; // ✅ Ensure this export is present
+export default MyBookings;
