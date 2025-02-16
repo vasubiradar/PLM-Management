@@ -1,0 +1,94 @@
+.service-provider-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-provider-form:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.service-provider-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.service-provider-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-provider-form input[type="text"],
+.service-provider-form input[type="tel"],
+.service-provider-form input[type="date"],
+.service-provider-form input[type="time"] {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.service-provider-form input:focus {
+    border-color: #0056b3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 91, 187, 0.7);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.confirm-btn {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.confirm-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .service-provider-form {
+        padding: 20px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

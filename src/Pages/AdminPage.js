@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TestService from "./TestService";
 import BookingService from "./BookingService";
 import "./Sidebar.css";
@@ -9,9 +10,7 @@ const AdminDashboard = () => {
     const [bookings, setBookings] = useState([]);
     const [view, setView] = useState("tests");
     const [newTest, setNewTest] = useState({ testName: "", imgUrl: "", description: "", price: "", duration: "" });
-    const [showProviderForm, setShowProviderForm] = useState(false);
-    const [selectedBookingId, setSelectedBookingId] = useState(null);
-    const [providerDetails, setProviderDetails] = useState({ name: "", experience: "", contactNumber: "", date: "", time: "" });
+    const navigate = useNavigate(); // For navigation
 
     useEffect(() => {
         loadTests();
@@ -60,20 +59,7 @@ const AdminDashboard = () => {
     };
 
     const handleApprove = (bookingId) => {
-        setSelectedBookingId(bookingId);
-        setShowProviderForm(true);
-    };
-
-    const handleProviderSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await BookingService.assignProvider(selectedBookingId, providerDetails);
-            alert("Service provider assigned successfully!");
-            setShowProviderForm(false);
-            loadBookings();
-        } catch (error) {
-            console.error("Error assigning provider", error);
-        }
+        navigate("/serviceprovider");  // Redirect to service provider page
     };
 
     return (
@@ -147,25 +133,6 @@ const AdminDashboard = () => {
                     </>
                 )}
             </div>
-
-            {showProviderForm && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <h3>Assign Service Provider</h3>
-                        <form onSubmit={handleProviderSubmit}>
-                            <input type="text" placeholder="Provider Name" value={providerDetails.name} onChange={(e) => setProviderDetails({ ...providerDetails, name: e.target.value })} required />
-                            <input type="text" placeholder="Experience (years)" value={providerDetails.experience} onChange={(e) => setProviderDetails({ ...providerDetails, experience: e.target.value })} required />
-                            <input type="tel" placeholder="Contact Number" value={providerDetails.contactNumber} onChange={(e) => setProviderDetails({ ...providerDetails, contactNumber: e.target.value })} required />
-                            <input type="date" placeholder="Date" value={providerDetails.date} onChange={(e) => setProviderDetails({ ...providerDetails, date: e.target.value })} required />
-                            <input type="time" placeholder="Time" value={providerDetails.time} onChange={(e) => setProviderDetails({ ...providerDetails, time: e.target.value })} required />
-                            <div className="modal-buttons">
-                                <button className="cancel-btn" type="button" onClick={() => setShowProviderForm(false)}>Cancel</button>
-                                <button className="confirm-btn" type="submit">Submit</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
 
             {view === "addTest" && (
                 <div className="add-test-container">

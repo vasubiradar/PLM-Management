@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BookingService from "./BookingService";
 import "./ServiceProvider.css";
 
 const ServiceProvider = () => {
+    const { bookingId } = useParams(); // Get booking ID from URL params
     const [providerDetails, setProviderDetails] = useState({
-        name: "",
-        experience: "",
-        contactNumber: "",
-        date: "",
-        time: ""
+        technicianName: "",
+        technicianContact: "",
+        technicianVisitDate: "",
+        technicianVisitTime: ""
     });
 
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ServiceProvider = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await BookingService.assignProvider(providerDetails);
+            await BookingService.updateTechnicianDetails(bookingId, providerDetails);
             alert("Service provider assigned successfully!");
             navigate("/admin-dashboard");
         } catch (error) {
@@ -33,11 +33,10 @@ const ServiceProvider = () => {
         <div className="service-provider-form">
             <h2>Assign Service Provider</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="name" placeholder="Provider Name" value={providerDetails.name} onChange={handleChange} required />
-                <input type="text" name="experience" placeholder="Experience (years)" value={providerDetails.experience} onChange={handleChange} required />
-                <input type="tel" name="contactNumber" placeholder="Contact Number" value={providerDetails.contactNumber} onChange={handleChange} required />
-                <input type="date" name="date" placeholder="Date" value={providerDetails.date} onChange={handleChange} required />
-                <input type="time" name="time" placeholder="Time" value={providerDetails.time} onChange={handleChange} required />
+                <input type="text" name="technicianName" placeholder="Technician Name" value={providerDetails.technicianName} onChange={handleChange} required />
+                <input type="tel" name="technicianContact" placeholder="Technician Contact" value={providerDetails.technicianContact} onChange={handleChange} required />
+                <input type="date" name="technicianVisitDate" placeholder="Visit Date" value={providerDetails.technicianVisitDate} onChange={handleChange} required />
+                <input type="time" name="technicianVisitTime" placeholder="Visit Time" value={providerDetails.technicianVisitTime} onChange={handleChange} required />
                 <div className="form-buttons">
                     <button type="button" className="cancel-btn" onClick={() => navigate("/admin-dashboard")}>Cancel</button>
                     <button type="submit" className="confirm-btn">Submit</button>
