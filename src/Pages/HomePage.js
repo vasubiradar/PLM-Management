@@ -26,8 +26,8 @@ const HomePage = () => {
           <div className="hero-text">
             <h1>Welcome to Our Pathology Lab</h1>
             <p>Accurate diagnostics, trusted results, and timely reports at your convenience.</p>
-            <a href="/book-test">
-              <button className="nav-item login-btn">Book Your Test Now</button>
+            <a href="/tests">
+              <button className="nav-item login-btn">Book Your Test Now </button>
             </a>
           </div>
           <div className="hero-image-container">

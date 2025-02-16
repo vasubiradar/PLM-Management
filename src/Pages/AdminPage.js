@@ -1,30 +1,21 @@
 import React, { useEffect, useState } from "react";
 import TestService from "./TestService";
 import BookingService from "./BookingService";
-import  "./Sidebar.css";
+import "./Sidebar.css";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
     const [tests, setTests] = useState([]);
     const [bookings, setBookings] = useState([]);
-    const [view, setView] = useState("tests"); // "tests", "bookings", "addTest"
+    const [view, setView] = useState("tests");
     const [newTest, setNewTest] = useState({ testName: "", imgUrl: "", description: "", price: "", duration: "" });
+    const [showProviderForm, setShowProviderForm] = useState(false);
+    const [selectedBookingId, setSelectedBookingId] = useState(null);
+    const [providerDetails, setProviderDetails] = useState({ name: "", experience: "", contactNumber: "", date: "", time: "" });
 
     useEffect(() => {
         loadTests();
     }, []);
-
-    const handleDeleteTest = async (id) => {
-      const confirmDelete = window.confirm("Are you sure you want to delete this test?");
-      if (confirmDelete) {
-          try {
-              await TestService.deleteTest(id);
-              setTests(tests.filter(test => test.id !== id));
-          } catch (error) {
-              console.error("Error deleting test", error);
-          }
-      }
-  };
 
     const loadTests = async () => {
         try {
@@ -44,6 +35,18 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleDeleteTest = async (id) => {
+        const confirmDelete = window.confirm("Are you sure you want to delete this test?");
+        if (confirmDelete) {
+            try {
+                await TestService.deleteTest(id);
+                setTests(tests.filter(test => test.id !== id));
+            } catch (error) {
+                console.error("Error deleting test", error);
+            }
+        }
+    };
+
     const handleAddTest = async (e) => {
         e.preventDefault();
         try {
@@ -56,21 +59,34 @@ const AdminDashboard = () => {
         }
     };
 
+    const handleApprove = (bookingId) => {
+        setSelectedBookingId(bookingId);
+        setShowProviderForm(true);
+    };
+
+    const handleProviderSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await BookingService.assignProvider(selectedBookingId, providerDetails);
+            alert("Service provider assigned successfully!");
+            setShowProviderForm(false);
+            loadBookings();
+        } catch (error) {
+            console.error("Error assigning provider", error);
+        }
+    };
+
     return (
         <div className="admin-dashboard">
             <div className="sidebar">
-            <h2>Admin Panel</h2>
-            <button className="add-btn" onClick={() => setView("addTest")}>Add Test</button>
+                <h2>Admin Panel</h2>
+                <button className="add-btn" onClick={() => setView("addTest")}>Add Test</button>
                 <button className="view-tests-btn" onClick={() => setView("tests")}>View Tests</button>
                 <button className="view-bookings-btn" onClick={() => { setView("bookings"); loadBookings(); }}>View Bookings</button>
-        </div>
-            {/* <Sidebar /> */}
+            </div>
             <div className="content">
                 <h2>Admin Dashboard</h2>
-                {/* <button className="add-btn" onClick={() => setView("addTest")}>Add Test</button>
-                <button className="view-tests-btn" onClick={() => setView("tests")}>View Tests</button>
-                <button className="view-bookings-btn" onClick={() => { setView("bookings"); loadBookings(); }}>View Bookings</button> */}
-                
+
                 {view === "tests" && (
                     <>
                         <h3>Tests</h3>
@@ -97,8 +113,15 @@ const AdminDashboard = () => {
                                 <tr>
                                     <th>Booking ID</th>
                                     <th>Patient Name</th>
+                                    <th>Email</th>
+                                    <th>Contact Number</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Test Date</th>
+                                    <th>Address</th>
                                     <th>Test ID</th>
                                     <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,8 +129,17 @@ const AdminDashboard = () => {
                                     <tr key={booking.id}>
                                         <td>{booking.id}</td>
                                         <td>{booking.name}</td>
+                                        <td>{booking.email}</td>
+                                        <td>{booking.contactNumber}</td>
+                                        <td>{booking.age}</td>
+                                        <td>{booking.gender}</td>
+                                        <td>{booking.testDate}</td>
+                                        <td>{booking.address}</td>
                                         <td>{booking.testId}</td>
                                         <td>{booking.status}</td>
+                                        <td>
+                                            <button className="approve-btn" onClick={() => handleApprove(booking.id)}>Approve</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -115,6 +147,25 @@ const AdminDashboard = () => {
                     </>
                 )}
             </div>
+
+            {showProviderForm && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h3>Assign Service Provider</h3>
+                        <form onSubmit={handleProviderSubmit}>
+                            <input type="text" placeholder="Provider Name" value={providerDetails.name} onChange={(e) => setProviderDetails({ ...providerDetails, name: e.target.value })} required />
+                            <input type="text" placeholder="Experience (years)" value={providerDetails.experience} onChange={(e) => setProviderDetails({ ...providerDetails, experience: e.target.value })} required />
+                            <input type="tel" placeholder="Contact Number" value={providerDetails.contactNumber} onChange={(e) => setProviderDetails({ ...providerDetails, contactNumber: e.target.value })} required />
+                            <input type="date" placeholder="Date" value={providerDetails.date} onChange={(e) => setProviderDetails({ ...providerDetails, date: e.target.value })} required />
+                            <input type="time" placeholder="Time" value={providerDetails.time} onChange={(e) => setProviderDetails({ ...providerDetails, time: e.target.value })} required />
+                            <div className="modal-buttons">
+                                <button className="cancel-btn" type="button" onClick={() => setShowProviderForm(false)}>Cancel</button>
+                                <button className="confirm-btn" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
 
             {view === "addTest" && (
                 <div className="add-test-container">

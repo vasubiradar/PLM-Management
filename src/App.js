@@ -11,6 +11,8 @@ import AdminPage from "./Pages/AdminPage.js";
 import UserTestPage from "./Pages/UserTestPage.js";
 import BookingForm from "./Pages/BookingForm.js";
 import MyBookings from "./Pages/MyBookings.js";
+import ServiceProvider from "./ServiceProvider";
+
 import './App.css';
 
 import { getFromLocalStorage, setToLocalStorage } from "./Services/LocalStorageUtil.js";
@@ -46,6 +48,7 @@ function App() {
         <Route path="/tests" element={<UserTestPage />} />
         <Route path="/book/:testId" element={<BookingForm />} />
         <Route path="/MyBookings" element={<MyBookings/>} />
+        <Route path="/service-provider/:id" element={<ServiceProvider />} />
 
         <Route
           path="/login"

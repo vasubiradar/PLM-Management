@@ -29,6 +29,10 @@ const MyBookings = () => {
                     {bookings.map((booking) => (
                         <div className="booking-card" key={booking.id}>
                             <h3>{booking.testName}</h3>
+                            
+                            <p><strong>Test Name:</strong> {booking.testName}</p>
+                            
+                            <p><strong>Date:</strong> {booking.testDate}</p>
                             <p><strong>Date:</strong> {booking.testDate}</p>
                             <p><strong>Status:</strong> <span className={`status-${booking.status.toLowerCase()}`}>{booking.status}</span></p>
                         </div>
