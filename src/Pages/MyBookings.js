@@ -12,6 +12,19 @@ const MyBookings = () => {
         fetchBookings();
     }, []);
 
+    const getBookingMessage = (status) => {
+        switch (status) {
+            case "Pending":
+                return "Thank you for your booking! Our technician will contact you shortly to confirm your appointment.";
+            case "Approved":
+                return "Your booking has been approved!  We'll see you soon."; // Or a message with technician details if available
+            case "Completed":
+                return "Your test is complete. Please see your results below."; // Or a message with a link to the report
+            default:
+                return "Booking status: " + status; // Default message
+        }
+    };
+
     const fetchBookings = async () => {
         try {
             const response = await BookingService.getBookingsByPatient(patientId);
@@ -50,11 +63,7 @@ const MyBookings = () => {
 
                             <h3>{booking.testName}</h3>
                             
-                            <p><strong>Test Name:</strong> {booking.testName}</p>
                             
-                            <p><strong>Date:</strong> {booking.testDate}</p>
-                            <p><strong>Date:</strong> {booking.testDate}</p>
-                            <p><strong>Status:</strong> <span className={`status-${booking.status.toLowerCase()}`}>{booking.status}</span></p>
                             <h3>Test: {testNames[booking.testId] || "Loading..."}</h3>
                             <p><strong>Name:</strong> {booking.name}</p>
                             <p><strong>Contact:</strong> {booking.contactNumber}</p>
@@ -68,6 +77,7 @@ const MyBookings = () => {
                                     {booking.status}
                                 </span>
                             </p>
+                            <p className="booking-message"><strong>{getBookingMessage(booking.status)}</strong></p>
 
                             {/* Technician details if status is Approved */}
                             {booking.status === "Approved" && (

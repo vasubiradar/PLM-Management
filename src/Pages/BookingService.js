@@ -29,6 +29,12 @@ class BookingService {
       },
     });
   }
+//update only status
+  updateOnlyBookingStatus(id, status) {
+    return axios.put(`${BOOKING_REST_API_URL}/${id}/status-only`, null, {
+      params: { status: status },
+    });
+  }
 
   // Update booking status and report URL
   updateBookingStatus(id, status, reportUrl = null) {

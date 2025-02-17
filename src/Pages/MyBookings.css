@@ -47,7 +47,7 @@
 .booking-card p {
     margin: 5px 0;
     font-size: 16px;
-    color: #555;
+    
 }
 
 .status-pending {
@@ -76,4 +76,22 @@
 .technician-details p {
     margin: 5px 0;
     color: #333;
+}
+
+.booking-message {
+    margin-top: 10px; /* Add some spacing */
+    font-style: italic; /* Make it italic */
+    color: #21b572; /* A slightly lighter color */
+}
+
+.status-pending { /* Example styling for pending status */
+    color: orange;
+}
+
+.status-approved {
+    color: green;
+}
+
+.status-completed {
+    color: blue;
 }
