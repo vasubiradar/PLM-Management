@@ -10,11 +10,10 @@ const AdminDashboard = () => {
     const [bookings, setBookings] = useState([]);
     const [view, setView] = useState("tests");
     const [newTest, setNewTest] = useState({ testName: "", imgUrl: "", description: "", price: "", duration: "" });
-    const navigate = useNavigate(); // For navigation
+    const navigate = useNavigate();
     const [reportUrl, setReportUrl] = useState("");
     const [selectedBooking, setSelectedBooking] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [rerender, setRerender] = useState(false);
 
     useEffect(() => {
         loadTests();
@@ -39,8 +38,7 @@ const AdminDashboard = () => {
     };
 
     const handleDeleteTest = async (id) => {
-        const confirmDelete = window.confirm("Are you sure you want to delete this test?");
-        if (confirmDelete) {
+        if (window.confirm("Are you sure you want to delete this test?")) {
             try {
                 await TestService.deleteTest(id);
                 setTests(tests.filter(test => test.id !== id));
@@ -67,42 +65,46 @@ const AdminDashboard = () => {
             if (window.confirm("Are you sure you want to approve this booking?")) {
                 try {
                     await BookingService.updateOnlyBookingStatus(id, "Approved");
-                    setBookings(bookings.map(booking => booking.id === id ? { ...booking, status: "Approved" } : booking));
+                    setBookings(bookings.map(booking => 
+                        booking.id === id ? { ...booking, status: "Approved" } : booking
+                    ));
                 } catch (error) {
                     console.error("Error updating booking status", error);
                 }
             }
-        } else if (currentStatus === "Approved") {
-            setSelectedBooking(id);
         }
     };
 
-    const showReportModal = (booking) => {
+    const handleCompleteClick = (booking) => {
+        console.log("Complete button clicked for booking:", booking); // Debugging
         setSelectedBooking(booking);
         setIsModalOpen(true);
-        setReportUrl(""); // Clear previous report URLs
     };
-
+    
     const handleReportSubmit = async () => {
+        if (!reportUrl.trim()) {
+            alert("Please enter a valid report URL.");
+            return;
+        }
+    
         try {
             await BookingService.updateBookingStatus(selectedBooking.id, "Completed", reportUrl);
-
-            // Correct way to update state immutably:
-            setBookings(bookings.map(b => 
-                b.id === selectedBooking.id ? { ...b, status: "Completed", reportUrl } : b
+            setBookings(bookings.map(booking =>
+                booking.id === selectedBooking.id
+                    ? { ...booking, status: "Completed", reportUrl }
+                    : booking
             ));
             closeReportModal();
         } catch (error) {
             console.error("Error updating booking with report", error);
         }
     };
+    
     const closeReportModal = () => {
+        console.log("Closing modal..."); // Debugging
         setSelectedBooking(null);
         setIsModalOpen(false);
-        setReportUrl("");
     };
-
-
     return (
         <div className="admin-dashboard">
             <div className="sidebar">
@@ -111,6 +113,7 @@ const AdminDashboard = () => {
                 <button className="view-tests-btn" onClick={() => setView("tests")}>View Tests</button>
                 <button className="view-bookings-btn" onClick={() => { setView("bookings"); loadBookings(); }}>View Bookings</button>
             </div>
+
             <div className="content">
                 <h2>Admin Dashboard</h2>
 
@@ -165,12 +168,12 @@ const AdminDashboard = () => {
                                         <td>{booking.testId}</td>
                                         <td>{booking.status}</td>
                                         <td>
-                                        {booking.status === "Pending" && (
+                                            {booking.status === "Pending" && (
                                                 <button className="approve-btn" onClick={() => handleStatusChange(booking.id, booking.status)}>Approve</button>
                                             )}
-                                             {booking.status === "Approved" && (
-                                            <button className="complete-btn" onClick={() => showReportModal(booking)}>Complete</button>
-                                        )}
+                                            {booking.status === "Approved" && (
+                                                <button className="complete-btn" onClick={() => handleCompleteClick(booking)}>Complete</button>
+                                            )}
                                             {booking.status === "Completed" && <span>Completed</span>}
                                         </td>
                                     </tr>
@@ -198,18 +201,18 @@ const AdminDashboard = () => {
                 </div>
             )}
 
-{selectedBooking && isModalOpen && (
-                    <div className="modal">
-                        <div className="modal-content">
-                            <h3>Upload Report for {selectedBooking.name} (ID: {selectedBooking.id})</h3> {/* Display booking details */}
-                            <input type="text" placeholder="Report URL" value={reportUrl} onChange={(e) => setReportUrl(e.target.value)} required />
-                            <div className="modal-buttons">
-                                <button className="cancel-btn" onClick={closeReportModal}>Cancel</button>
-                                <button className="confirm-btn" onClick={handleReportSubmit}>Submit</button>
-                            </div>
+            {isModalOpen && selectedBooking && (
+                <div className="pop">
+                    <div className="popup">
+                        <h3>Upload Report for {selectedBooking.name}</h3>
+                        <input type="text" placeholder="Report URL" value={reportUrl} onChange={(e) => setReportUrl(e.target.value)} required />
+                        <div className="modal-buttons">
+                            <button className="cancel-btn" onClick={closeReportModal}>Cancel</button>
+                            <button className="confirm-btn" onClick={handleReportSubmit}>Submit</button>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
         </div>
     );
 };

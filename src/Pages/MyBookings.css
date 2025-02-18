@@ -1,7 +1,10 @@
 .my-bookings-container {
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/004/242/510/small_2x/abstract-wave-trendy-geometric-abstract-background-with-white-and-blue-gradient-vector.jpg");
     padding: 20px;
-    background-color: #f5f7fa;
+    background-color: #ffffff;
     min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .my-bookings-header {
@@ -25,11 +28,13 @@
 }
 
 .booking-card {
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,2,0,0.2);
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid black;
+
 }
 
 .booking-card:hover {

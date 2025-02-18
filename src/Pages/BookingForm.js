@@ -31,7 +31,7 @@ const BookingForm = () => {
         try {
             await BookingService.createBooking(bookingData);
             alert("Your booking is successful! Status is 'Pending'. Confirmation soon.");
-            navigate("/my-bookings");  // Redirect to MyBookings page after submission
+            navigate("/MyBookings");  // Redirect to MyBookings page after submission
         } catch (error) {
             console.error("Error creating booking:", error);
             alert("Failed to book the test. Please try again.");

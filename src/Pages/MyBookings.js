@@ -80,15 +80,7 @@ const MyBookings = () => {
                             <p className="booking-message"><strong>{getBookingMessage(booking.status)}</strong></p>
 
                             {/* Technician details if status is Approved */}
-                            {booking.status === "Approved" && (
-                                <div className="technician-details">
-                                    <h4>Technician Details:</h4>
-                                    <p><strong>Name:</strong> {booking.technicianName || "N/A"}</p>
-                                    <p><strong>Contact:</strong> {booking.technicianContact || "N/A"}</p>
-                                    <p><strong>Visit Date:</strong> {booking.technicianVisitDate || "N/A"}</p>
-                                    <p><strong>Visit Time:</strong> {booking.technicianVisitTime || "N/A"}</p>
-                                </div>
-                            )}
+                           
 
                             {/* Report URL if status is Completed */}
                             {booking.status === "Completed" && booking.reportUrl && (
