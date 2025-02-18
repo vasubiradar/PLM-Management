@@ -35,8 +35,8 @@ const UserTestPage = () => {
                         <div className="test-info">
                             <h4 className="test-title">{test.testName}</h4>
                             <p className="test-description">{test.description}</p>
-                            <p className="test-price"><strong>Price:</strong> ${test.price}</p>
-                            <p className="test-duration"><strong>Duration:</strong> {test.duration}</p>
+                            <p className="test-price"><strong>Price per head:</strong> Rs {test.price}</p>
+                            <p className="test-duration"><strong>Report available in :</strong> {test.duration} days</p>
                             <button className="book-now-btn" onClick={() => handleBookNow(test)}>Book Now</button>
                         </div>
                     </div>
